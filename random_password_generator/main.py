@@ -22,14 +22,33 @@ def generate_password():
     if length < 4:
         print("Password length must be atleast 4 characters.")
         return
-    
+
     lower = string.ascii_lowercase
     uppercase = string.ascii_uppercase if include_uppercase == "yes" else ""
     special = string.punctuation if include_special == "yes" else ""
     digit = string.digits if include_digit == "yes" else ""
     all_characters = lower + uppercase + special + digit
 
-    print(all_characters)
+    required_characters = []
+    if include_uppercase == "yes":
+        required_characters.append(random.choice(uppercase))
 
+    if include_digit == "yes":
+        required_characters.append(random.choice(digit))
 
-generate_password()
+    if include_special == "yes":
+        required_characters.append(random.choice(special))
+
+    remaining_length = length - len(required_characters)
+    password = required_characters
+
+    for _ in range(remaining_length):
+        character = random.choice(all_characters)
+        password.append(character)
+
+    random.shuffle(password)
+    str_password = "".join(password)
+    return str_password
+
+password = generate_password()
+print(password)
