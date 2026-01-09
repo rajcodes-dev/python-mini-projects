@@ -50,5 +50,5 @@ def generate_password():
     str_password = "".join(password)
     return str_password
 
-password = generate_password()
-print(password)
+passcode = generate_password()
+print(passcode)
