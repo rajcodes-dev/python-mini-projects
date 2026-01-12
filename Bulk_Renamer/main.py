@@ -1,7 +1,9 @@
+"""Just a simple files renamer project."""
 import os 
 
 
 def rename_file(files, ext):
+    """Rename the files."""
 
     files_with_ext = []
     for file in files:
