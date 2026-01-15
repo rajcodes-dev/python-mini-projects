@@ -14,3 +14,9 @@ for word in message.split():
     if len(word) == 0:
         pigLatin.append(prefixNonLetters)
         continue
+    
+    # Separate the non-letters at the end of this word:
+    suffixNonLetters = ''
+    while not word[-1].isalpha():
+        suffixNonLetters = word[-1] + suffixNonLetters
+        word = word[:-1]
