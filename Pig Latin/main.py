@@ -20,3 +20,29 @@ for word in message.split():
     while not word[-1].isalpha():
         suffixNonLetters = word[-1] + suffixNonLetters
         word = word[:-1]
+
+    # Remember that the word are in title or upper case
+    wasUpper = word.isupper()
+    wasTitle = word.title()
+
+    word = word.lower() # lower the word for easier translation
+
+    # Separate consonants at the start of this word:
+    prefixConsonants = ''
+    while len(word) > 0 and not word[0] in VOWELS:
+        prefixConsonants += word[0]
+        word = word[1:]
+    
+    # Add the pig latin at the ending to the word:
+    if prefixConsonants != '':
+        word += prefixConsonants + 'ay'
+    else:
+        word += 'yay'
+
+    # Set the word in upper and title case
+    if wasTitle:
+        word = word.title()
+    if wasUpper:
+        word = word.upper()
+
+    
